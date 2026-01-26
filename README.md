@@ -25,13 +25,13 @@
 
 ### 📊 GitHub Stats
 
-<p align="center">
+<!-- <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=nev8rz&show_icons=true&theme=radical" alt="nev8rz's GitHub stats" />
 </p>
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=nev8rz&layout=compact&theme=radical" alt="Top Langs" />
-</p>
+</p> -->
 
 <p align="center">
   <a href="https://github.com/nev8rz/nev8rz/actions/workflows/snake.yml">
