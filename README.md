@@ -21,6 +21,7 @@
 ### 📫 Contact Me
 
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/nev8rz)
+[![Email](https://img.shields.io/badge/Email-zyjm%40mail.ustc.edu.cn-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:zyjm@mail.ustc.edu.cn)
 
 ### 📊 GitHub Stats
 
@@ -33,7 +34,9 @@
 </p>
 
 <p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=nev8rz&theme=redical" alt="Activity Graph" />
+  <a href="https://github.com/nev8rz/nev8rz/actions/workflows/snake.yml">
+    <img src="https://github.com/nev8rz/nev8rz/raw/output/github-contribution-grid-snake.svg" alt="Snake animation" />
+  </a>
 </p>
 
 ---
