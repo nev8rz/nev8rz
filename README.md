@@ -33,7 +33,7 @@
 </p>
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com/?user=nev8rz&theme=radical" alt="GitHub Streak" />
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=nev8rz&theme=redical" alt="Activity Graph" />
 </p>
 
 ---
