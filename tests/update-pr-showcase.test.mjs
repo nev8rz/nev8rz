@@ -4,7 +4,9 @@ import test from "node:test";
 import {
   END_MARKER,
   START_MARKER,
+  buildReadmeUpdates,
   escapeMarkdown,
+  fetchMergedPullRequests,
   formatStars,
   renderTable,
   replaceSection,
@@ -176,4 +178,96 @@ test("replaceSection is bounded and idempotent", () => {
   assert.throws(() => replaceSection("missing", "new", "README.md"), {
     message: "README.md: missing or misordered PR showcase markers",
   });
+});
+
+test("fetchMergedPullRequests follows pagination", async () => {
+  const payloads = [
+    {
+      data: {
+        user: {
+          pullRequests: {
+            pageInfo: { hasNextPage: true, endCursor: "next" },
+            nodes: [pullRequest({ number: 1 })],
+          },
+        },
+      },
+    },
+    {
+      data: {
+        user: {
+          pullRequests: {
+            pageInfo: { hasNextPage: false, endCursor: null },
+            nodes: [pullRequest({ number: 2 })],
+          },
+        },
+      },
+    },
+  ];
+  const variables = [];
+  const fetchImpl = async (_url, options) => {
+    variables.push(JSON.parse(options.body).variables);
+    return { ok: true, json: async () => payloads.shift() };
+  };
+
+  const result = await fetchMergedPullRequests({
+    token: "token",
+    username: "nev8rz",
+    fetchImpl,
+  });
+
+  assert.deepEqual(result.map(({ number }) => number), [1, 2]);
+  assert.deepEqual(variables, [
+    { username: "nev8rz", after: null },
+    { username: "nev8rz", after: "next" },
+  ]);
+});
+
+test("fetchMergedPullRequests surfaces HTTP and GraphQL errors", async () => {
+  await assert.rejects(
+    fetchMergedPullRequests({
+      token: "token",
+      username: "nev8rz",
+      fetchImpl: async () => ({
+        ok: false,
+        status: 503,
+        text: async () => "unavailable",
+      }),
+    }),
+    { message: "GitHub GraphQL request failed with 503: unavailable" },
+  );
+
+  await assert.rejects(
+    fetchMergedPullRequests({
+      token: "token",
+      username: "nev8rz",
+      fetchImpl: async () => ({
+        ok: true,
+        json: async () => ({ errors: [{ message: "rate limited" }] }),
+      }),
+    }),
+    { message: "GitHub GraphQL error: rate limited" },
+  );
+});
+
+test("buildReadmeUpdates prepares both locales or throws", () => {
+  const source = [START_MARKER, "old", END_MARKER, ""].join("\n");
+  const updates = buildReadmeUpdates(
+    { "README.md": source, "README.zh-CN.md": source },
+    [pullRequest()],
+  );
+  assert.equal(updates.length, 2);
+  assert.ok(updates[0].content.includes("Repository"));
+  assert.ok(updates[1].content.includes("仓库"));
+
+  assert.throws(
+    () =>
+      buildReadmeUpdates(
+        { "README.md": source, "README.zh-CN.md": "missing" },
+        [pullRequest()],
+      ),
+    {
+      message:
+        "README.zh-CN.md: missing or misordered PR showcase markers",
+    },
+  );
 });
