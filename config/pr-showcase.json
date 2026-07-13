@@ -1,0 +1,8 @@
+{
+  "username": "nev8rz",
+  "maxItems": 6,
+  "excludedRepositories": [
+    "vansin/intern-ai-doc"
+  ],
+  "onePerRepository": true
+}
