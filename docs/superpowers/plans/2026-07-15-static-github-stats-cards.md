@@ -45,6 +45,7 @@ test("profile READMEs use repository-local light and dark stats cards", () => {
 
 test("profile workflow generates and commits all four static cards", () => {
   const workflow = readFileSync(".github/workflows/pr-showcase.yml", "utf8");
+  assert.ok(workflow.includes("run: node --test tests/*.test.mjs"));
   assert.equal(workflow.split(action).length - 1, 4);
   for (const path of cardPaths.map((path) => path.slice(2))) {
     assert.ok(workflow.includes(`path: ${path}`));
@@ -114,7 +115,7 @@ Use the same four local paths in `README.zh-CN.md`, preserving the Chinese alt t
 
 - [ ] **Step 3: Add four card-generation steps to the existing workflow**
 
-Insert these steps after Node setup and before the PR generator runs:
+Change the workflow test command to `node --test tests/*.test.mjs`, then insert these steps after the tests and before the PR generator runs:
 
 ```yaml
       - name: Generate light stats card

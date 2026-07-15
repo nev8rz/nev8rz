@@ -31,12 +31,12 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=nev8rz&amp;show_icons=true&amp;hide_border=true&amp;theme=github_dark">
-    <img height="165" src="https://github-readme-stats.vercel.app/api?username=nev8rz&amp;show_icons=true&amp;hide_border=true&amp;theme=default" alt="Yijin Zhou's GitHub stats">
+    <source media="(prefers-color-scheme: dark)" srcset="./profile/stats-dark.svg">
+    <img height="165" src="./profile/stats-light.svg" alt="Yijin Zhou's GitHub stats">
   </picture>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=nev8rz&amp;layout=compact&amp;hide_border=true&amp;theme=github_dark">
-    <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=nev8rz&amp;layout=compact&amp;hide_border=true&amp;theme=default" alt="Most used languages">
+    <source media="(prefers-color-scheme: dark)" srcset="./profile/top-langs-dark.svg">
+    <img height="165" src="./profile/top-langs-light.svg" alt="Most used languages">
   </picture>
 </p>
 
