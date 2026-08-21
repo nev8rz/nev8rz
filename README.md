@@ -46,7 +46,7 @@
 
 | Repository | Pull Request | Stars | Status |
 | --- | --- | ---: | :---: |
-| [verl-project/verl](https://github.com/verl-project/verl) | [#6167 — [trainer] fix: convert numpy arrays to native types before dumping rollout JSONL](https://github.com/verl-project/verl/pull/6167) | 23k | Merged |
+| [verl-project/verl](https://github.com/verl-project/verl) | [#6167 — [trainer] fix: convert numpy arrays to native types before dumping rollout JSONL](https://github.com/verl-project/verl/pull/6167) | 23.1k | Merged |
 | [SWE-agent/SWE-agent](https://github.com/SWE-agent/SWE-agent) | [#1406 — Fix SimpleBatchInstance repo names containing github](https://github.com/SWE-agent/SWE-agent/pull/1406) | 20.1k | Merged |
 
 <!-- PR-SHOWCASE:END -->
